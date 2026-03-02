@@ -24,7 +24,7 @@ The dataset used is a <mark> **500MB CSV** </mark> containing approximately <mar
 
 
 ### 2. Describe your fraud detection model in elaboration.
-The model is built using <mark **LightGBM**,</mark>a performance-efficient gradient boosting framework from Microsoft. It was chosen for its high accuracy and ability to process millions of rows with minimal memory overhead. The model achieved a **92% harmonic F1 score**, indicating it is highly reliable for production deployment.
+The model is built using <mark> **LightGBM**,</mark> a performance-efficient gradient boosting framework from Microsoft. It was chosen for its high accuracy and ability to process millions of rows with minimal memory overhead. The model achieved a **92% harmonic F1 score**, indicating it is highly reliable for production deployment.
 
 
 
