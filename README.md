@@ -23,19 +23,57 @@ The dataset used is a <mark> **500MB CSV** </mark> containing approximately <mar
 * **Encoding:** **Label Encoding** was applied to handle categorical variables.
 * **Class Imbalance:** To handle the significant imbalance between fraudulent and legitimate transactions, I used the **SMOTE (Synthetic Minority Over-sampling Technique)** to generate synthetic data for the minority class during the preprocessing stage.
 
+<div align="center"> <strong>  Image of raw loaded data  </strong> </div> 
+ <div align="center">
+  <img src="images/runc.png"  height="600"  width="2100" alt="Trades vs winrate">
+  </div>
+  <br> 
+  <div align="center">  <strong> Outlier Visualization </strong> </div>
+  
+  <div align="center">
+  <img src="images/outlier_vis.png"   width="600" alt="Trades vs winrate">
+  </div>
+  <br>
+  <br>
+  <br>
+
 
 
 ### 2. Describe your fraud detection model in elaboration.
 The model is built using <mark> **LightGBM**,</mark> a performance-efficient gradient boosting framework from Microsoft. It was chosen for its high accuracy and ability to process millions of rows with minimal memory overhead. The model achieved a **92% harmonic F1 score**, indicating it is highly reliable for production deployment.
+
+<div align="center"> <strong>  Model's hyperparameter config </strong> </div> 
+<div align="center">
+  <img src="images/model_params.png"  height="600" width="210" alt="Trades vs winrate">
+  </div>
+  <br>
+  <br>
+  <br>
+
 
 
 
 ### 3. How did you select variables to be included in the model?
 Variable selection was driven by **data correlation** analysis using `pandas`. I prioritized **transformed features** and variables that showed a strong statistical relationship with the target, specifically focusing on the flow of funds between accounts.
 
-### 4. Demonstrate the performance of the model by using best set of tools.
-The performance is demonstrated using a **Classification Report**, which provides the best overview of precision, recall, and the F1-score. These tools are essential for evaluating unbalanced datasets. Additionally, a **Confusion Matrix** was utilized to visualize the model's ability to distinguish between actual fraud and legitimate transactions.
+<div align="center"> <strong>  Corelation matrix </strong> </div> 
+<div align="center">
+  <img src= "images/corr_matrix.png"   width="1200" alt="Trades vs winrate">
+  </div>
+  <br>
+  <br>
+  <br>
 
+### 4. Demonstrate the performance of the model by using best set of tools.
+The performance is demonstrated using a **Classification Report**, which provides the best overview of precision, recall, and the F1-score. These tools are essential for evaluating unbalanced datasets. Additionally, a **Confusion Matrix** was utilized to visualize the model's ability to distinguish between actual fraud and legitimate transactions and **average precision score** is also used.
+
+ <div align="center"> <strong>  Classification Report </strong> </div> 
+<div align="center">
+<img src="images/class_report.png"   width="720" alt="Trades vs winrate">
+  </div>
+  <br>
+  <br>
+  <br>
 
 
 ### 5. What are the key factors that predict fraudulent customer?
@@ -88,22 +126,50 @@ Financial datasets are naturally prone to extreme outliers (high-value transfers
 - **Mechanism:** It scales features using the Interquartile Range (IQR).
 - **Benefit:** This prevents extreme outliers from collapsing the distribution of "normal" transactions, which is vital for maintaining the statistical integrity of the 5-column feature set.
 
+  <div align="center">
+  <img src="images/robustscale.png"  width="930" alt="Trades vs winrate">
+  </div>
+  <br>
+  <br>
+  <br>
+
+
 ### 2. Log1p Transformation
 To further stabilize the variance in transaction amounts without losing the signal of the outliers, I applied a **Log1p transformation** ($y = \ln(1 + x)$) using `NumPy`.
 - This converts highly skewed distributions into more normal-like distributions.
 - It desensitizes the model to the magnitude of the outlier while preserving its relative significance.
 
+<div align="center">
+  <img src="images/log1p.png"   width="930" alt="Trades vs winrate">
+  </div>
+  <br>
+  <br>
+  <br>
+
 ### 3. Categorical Encoding
 Categorical transaction types were converted into numerical formats using **Label Encoding**, ensuring compatibility with the mathematical requirements of the boosting algorithm.
+  <div align="center">
+  <img src="images/labelencode.png"   width="930" alt="Trades vs winrate">
+  </div>
+  <br>
+  <br>
+  <br>
 
 ### 4. SMOTE (Synthetic Minority Over-sampling Technique)
 To address the severe class imbalance inherent in fraud data, I implemented **SMOTE**.
 - Unlike simple oversampling (duplication), SMOTE creates **synthetic examples** of the minority class.
 - This forces the model to learn the decision boundary of fraud patterns rather than just memorizing the few available examples.
+  
+  <div align="center">
+  <img src="images/smote.png"   width="1200" alt="Trades vs winrate">
+  </div>
+  <br>
+  <br>
+  <br>
 
 
 
----
+------
 
 ## 🧠 Model Architecture: LightGBM
 
@@ -113,9 +179,13 @@ The engine of this project is **LightGBM**, a gradient boosting framework that u
 - **Leaf-wise Growth:** It grows trees leaf-wise rather than level-wise, which allows it to achieve much lower loss and higher accuracy on large-scale data.
 - **Result:** Achieved a **92% Harmonic F1-Score**, providing a near-perfect balance between catching fraud (Recall) and minimizing false alarms (Precision).
 
-
-
----
+<div align="center">
+  <img src="images/model_params.png"   width="300" alt="Trades vs winrate">
+  </div>
+  <br>
+  <br>
+  <br>
+---------
 
 ## 📈 Performance Evaluation
 
@@ -124,8 +194,14 @@ In fraud detection, **Accuracy is a misleading metric**. I prioritized the follo
 1.  **Classification Report:** Provides a granular look at Precision, Recall, and the F1-Score for both legitimate and fraudulent classes.
 2.  **Confusion Matrix:** Used to visualize the trade-off between False Positives (customer friction) and False Negatives (missed fraud).
 3.  **Feature Importance:** Identified that **Before vs. After balance** deltas for both sender and receiver are the strongest predictors of malicious activity.
+<div align="center">
+  <img src="images/class_report.png"   width="930" alt="Trades vs winrate">
+  </div>
+  <br>
+  <br>
+  <br>
 
----
+----------
 
 ## Key details about LightGBM and Microsoft:
 1.  **Development**: It was developed by Microsoft to handle large-scale data efficiently.
