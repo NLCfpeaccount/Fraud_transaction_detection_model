@@ -1,6 +1,8 @@
 # Proactive Fraud Detection for Large-Scale Financial Transactions
 
-This project implements an end-to-end machine learning pipeline to detect fraudulent activity within a massive financial dataset (6.4 million rows). By focusing on "account wipeout" patterns and utilizing high-performance gradient boosting, the system achieves a 92% F1-score.
+This project implements an end-to-end machine learning pipeline to detect fraudulent activity within a massive financial dataset 
+
+(64 lakhs rows or 6.4 million rows). By focusing on "account wipeout" patterns and utilizing high-performance gradient boosting, the system achieves a 92% F1-score.
 
 ## 🛠️ Technology Stack
 * **Data Processing:** `Pandas`, `NumPy`
