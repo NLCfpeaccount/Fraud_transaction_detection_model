@@ -125,6 +125,8 @@ An end-to-end machine learning solution designed to identify fraudulent activity
 Financial datasets are naturally prone to extreme outliers (high-value transfers). Instead of standardizing via mean/variance, I utilized **Robust Scaling**. 
 - **Mechanism:** It scales features using the Interquartile Range (IQR).
 - **Benefit:** This prevents extreme outliers from collapsing the distribution of "normal" transactions, which is vital for maintaining the statistical integrity of the 5-column feature set.
+  **Formula**-----> $$X_{scaled} = \frac{X_i - \text{median}(X)}{Q_3(X) - Q_1(X)}$$
+
 
   <div align="center">
   <img src="images/robustscale.png"  width="930" alt="Trades vs winrate">
@@ -135,7 +137,11 @@ Financial datasets are naturally prone to extreme outliers (high-value transfers
 
 
 ### 2. Log1p Transformation
-To further stabilize the variance in transaction amounts without losing the signal of the outliers, I applied a **Log1p transformation** ($y = \ln(1 + x)$) using `NumPy`.
+To further stabilize the variance in transaction amounts without losing the signal of the outliers, I applied a **Log1p transformation**  using `NumPy`. 
+
+
+**Formula**-----> $$\log1p(x) = \ln(1 + x)$$
+
 - This converts highly skewed distributions into more normal-like distributions.
 - It desensitizes the model to the magnitude of the outlier while preserving its relative significance.
 
