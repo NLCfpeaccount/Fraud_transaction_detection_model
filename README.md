@@ -1,4 +1,10 @@
 # Proactive Fraud Detection for Large-Scale Financial Transactions
+<div align="center"> <strong>  Workflow of Fraud transaction detection model </strong> </div> 
+ <div align="center">
+  <img src="images/workflow.png"  height="600"  width="2100" alt="Trades vs winrate">
+  </div>
+  <br> 
+  <div align="center">  <strong> Outlier Visualization </strong> </div>
 
 This project implements an end-to-end machine learning pipeline to detect fraudulent activity within a massive financial dataset (64 lakhs rows or 6.4 million rows). 
 
