@@ -224,3 +224,13 @@ In fraud detection, **Accuracy is a misleading metric**. I prioritized the follo
 ### Installation
 ```bash
 pip install pandas numpy scikit-learn imbalanced-learn lightgbm
+
+
+
+## ⚖️ Copyright & License
+
+**© 2026 [Your Full Name]. All Rights Reserved.**
+
+This project is published strictly for technical demonstration and independent project work validation. No part of this repository—including the LightGBM pipeline, feature engineering logic, or architectural design—may be copied, plagiarized, or used for institutional accreditation metrics (e.g., NAAC, NIRF) or commercial purposes without explicit written consent. 
+
+For full terms regarding credit protection, anti-plagiarism, and liability disclaimers, please refer to the main [LICENSE](./LICENSE) file.
